@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbel version="1.0"
+      xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
+      xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
+>
+  <bookmark href="file:///run/media/trnc3t/0854-F38B/Notes/CachyOS/cmdFixOpenbox" added="2026-04-21T14:24:48.893480Z" modified="2026-04-21T14:24:48.893502Z" visited="2026-04-21T14:24:48.893482Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;Thunar %u&apos;" modified="2026-04-21T14:24:48.893500Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/trnc3t" added="2026-04-21T14:49:30.102260Z" modified="2026-04-21T14:49:30.108372Z" visited="2026-04-21T14:49:30.102261Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="inode/directory"/>
+        <bookmark:applications>
+          <bookmark:application name="org.chromium.Chromium" exec="&apos;gio open %u&apos;" modified="2026-04-21T14:49:30.102262Z" count="1"/>
+          <bookmark:application name="xdg-desktop-portal-gtk" exec="&apos;xdg-desktop-portal-gtk %u&apos;" modified="2026-04-21T14:49:30.108370Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+</xbel>
