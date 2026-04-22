@@ -77,7 +77,7 @@ URxvt.keysym.Control-Shift-Next:  tabbedex:move_tab_right
 URxvt.keysym.Control-Shift-Prior: tabbedex:move_tab_left
 
 ! Color schemes.
-#define black0                    [100]#373E4D
+#define black0                    [97]#373E4D
 #define black1                    #3B4252
 #define black2                    #434C5E
 #define black3                    #4C566A
@@ -93,7 +93,7 @@ URxvt.keysym.Control-Shift-Prior: tabbedex:move_tab_left
 #define magenta1                  #D8A6F4
 #define cyan0                     #89CCF7
 #define cyan1                     #A1D5F7
-#define white0                    [97]#F9F9F9
+#define white0                    [100]#F9F9F9
 #define white1                    #F7F7F7
 #define white2                    #F4F4F4
 
@@ -112,24 +112,24 @@ URxvt.keysym.Control-Shift-Prior: tabbedex:move_tab_left
 *.color14:                        cyan1
 
 ! Used by `terminal-set.sh`, do not change the following configuration.
-!*.foreground:                     white0
-!*.background:                     black0
-!*.cursorColor:                    white0
-!*.borderColor:                    black0
+*.foreground:                     white0
+*.background:                     black0
+*.cursorColor:                    white0
+*.borderColor:                    black0
 
-!*.color0:                         black2
-!*.color7:                         white1
+*.color0:                         black2
+*.color7:                         white1
 
-!*.color8:                         black3
-!*.color15:                        white2
+*.color8:                         black3
+*.color15:                        white2
 
-*.foreground:                     black0
-*.background:                     white0
-*.cursorColor:                    black0
-*.borderColor:                    white0
+!*.foreground:                     black0
+!*.background:                     white0
+!*.cursorColor:                    black0
+!*.borderColor:                    white0
 
-*.color0:                         white1
-*.color7:                         black2
+!*.color0:                         white1
+!*.color7:                         black2
 
-*.color8:                         white2
-*.color15:                        black3
+!*.color8:                         white2
+!*.color15:                        black3

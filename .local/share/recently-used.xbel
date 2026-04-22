@@ -24,4 +24,64 @@
       </metadata>
     </info>
   </bookmark>
+  <bookmark href="file:///run/media/trnc3t/0854-F38B/Notes/CachyOS/openbox-custom-theme/move_openbox_skill.sh" added="2026-04-22T00:09:10.262829Z" modified="2026-04-22T00:09:10.262865Z" visited="2026-04-22T00:09:10.262835Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/x-shellscript"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2026-04-22T00:09:10.262856Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///run/media/trnc3t/e7ac426e-4b2a-4caa-a7a2-d63663ff9a96/tr3cyos/.agents/skills/add-provider-doc/SKILL.md" added="2026-04-22T00:11:03.415087Z" modified="2026-04-22T00:11:03.415108Z" visited="2026-04-22T00:11:03.415092Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/markdown"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2026-04-22T00:11:03.415100Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/trnc3t/.agents/skills/openbox-theme-creator/SKILL.md" added="2026-04-22T00:11:20.490885Z" modified="2026-04-22T00:11:20.490901Z" visited="2026-04-22T00:11:20.490889Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/markdown"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2026-04-22T00:11:20.490895Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/trnc3t/.config/opencode/opencode.json" added="2026-04-22T00:18:28.243179Z" modified="2026-04-22T00:19:17.564478Z" visited="2026-04-22T00:18:28.243182Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/json"/>
+        <bookmark:applications>
+          <bookmark:application name="Thunar" exec="&apos;thunar %u&apos;" modified="2026-04-22T00:19:17.564473Z" count="3"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///run/media/trnc3t/0854-F38B/TransferData/Priority_High/win_bookmarks_1.html" added="2026-04-22T01:28:17.403940Z" modified="2026-04-22T01:28:17.415186Z" visited="2026-04-22T01:28:17.403945Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/html"/>
+        <bookmark:applications>
+          <bookmark:application name="xdg-desktop-portal-gtk" exec="&apos;xdg-desktop-portal-gtk %u&apos;" modified="2026-04-22T01:28:17.415181Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///run/media/trnc3t/0854-F38B/TransferData/Priority_High/bookmarks_25_01_2026.html" added="2026-04-22T01:29:13.210741Z" modified="2026-04-22T01:29:13.222258Z" visited="2026-04-22T01:29:13.210746Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/html"/>
+        <bookmark:applications>
+          <bookmark:application name="xdg-desktop-portal-gtk" exec="&apos;xdg-desktop-portal-gtk %u&apos;" modified="2026-04-22T01:29:13.222252Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
 </xbel>

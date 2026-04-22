@@ -34,6 +34,8 @@ setup_ui()
         ;;
         eyec*) BODY='EyeCandy Theme'
         ;;
+        nord*) BODY='Nordic Theme'
+        ;;
     esac
 
     case "${2}" in
@@ -52,11 +54,13 @@ setup_ui()
 case "${1}" in
     '') joyd_tray_programs kill
 
-        for T in mechanical eyecandy; do
-            [ "$CHK_THEME" != "$T" ] || continue
-            setup_ui "$T" "$CHK_MODE" reverse_terminal_bg_fg
-            break
-        done
+        case "$CHK_THEME" in
+            mechanical) NEXT_THEME="eyecandy" ;;
+            eyecandy)   NEXT_THEME="nordic" ;;
+            *)          NEXT_THEME="mechanical" ;;
+        esac
+        
+        setup_ui "$NEXT_THEME" "$CHK_MODE" reverse_terminal_bg_fg
 
         LANG="$SYSTEM_LANG" joyd_tray_programs exec
     ;;

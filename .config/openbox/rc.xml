@@ -40,7 +40,7 @@
     <primaryMonitor>1</primaryMonitor>
   </placement>
   <theme>
-    <name>Sweetly</name>
+    <name>Nordic</name>
     <!-- Available characters are NDSLIMC, each can occur at most once.
          N: window icon
          L: window label (AKA title)
@@ -49,7 +49,7 @@
          C: close
          S: shade (roll up/down)
          D: omnipresent (on all desktops) -->
-    <titleLayout>CIML</titleLayout>
+    <titleLayout>LIMC</titleLayout>
     <keepBorder>yes</keepBorder>
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "my-custom-gemini": {
+      "npm": "@ai-sdk/google",
+      "name": "Custom Gemini Proxy",
+      "options": {
+        "baseURL": "https://goldenglow.webn.cc/v1beta",
+        "apiKey": "gg-gcli-BCRxaNjWwpIoREWCuhHYNbPTefZ9hS3oL-PV2MWqD48"
+      },
+      "models": {
+        "gemini-3-flash-preview": {
+          "name": "Gemini 3 Flash Preview",          
+          "modalities": { "input": ["image", "text"], "output": ["text"] }
+        },
+        "gemini-3-pro-preview": {
+          "name": "Gemini 3 Pro Preview",          
+          "modalities": { "input": ["image", "text"], "output": ["text"] }
+        },
+        "gemini-2.5-pro-maxthinking": {
+          "name": "Gemini 2.5 Pro (Max Thinking)",          
+          "modalities": { "input": ["image", "text"], "output": ["text"] }
+        },
+        "gemini-2.5-pro": {
+          "name": "Gemini 2.5 Pro",          
+          "modalities": { "input": ["image", "text"], "output": ["text"] }
+        },
+        "gemini-2.5-flash": {
+          "name": "Gemini 2.5 Flash",          
+          "modalities": { "input": ["image", "text"], "output": ["text"] }
+        },
+        "gemini-3-pro-preview-search": {
+          "name": "Gemini 3 Pro (Search Mode)",          
+          "modalities": { "input": ["image", "text"], "output": ["text"] }
+        },
+        "gemini-3.1-pro-preview": {
+          "name": "Gemini 3 Pro Preview",          
+          "modalities": { "input": ["image", "text"], "output": ["text"] }
+        }
+      }
+    }
+  },
+  "mcp": {
+    "pandalight": {
+      "type": "local",
+      "command": ["/run/media/tr3cyos/SantaSSD/AppImages/lightpanda-x86_64-linux", "mcp"],
+      "enabled": true
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "enabled": true,
+      "headers": {
+        "CONTEXT7_API_KEY": "ctx7sk-f71db4ca-f8aa-4058-9692-2f98e9e0e741"
+      }
+    }
+  }
+}

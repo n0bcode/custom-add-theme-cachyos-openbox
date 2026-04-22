@@ -80,4 +80,4 @@ button {
   margin: -1px;
 }
 
-@import "themes/colorschemes/eyecandy.rasi"
+@import "themes/colorschemes/nordic.rasi"

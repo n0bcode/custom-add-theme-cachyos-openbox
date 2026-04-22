@@ -127,7 +127,7 @@ menu.border.color: #3b4252
 ## Title
 menu.title.bg: flat
 menu.title.bg.color: #404859
-menu.title.text.color: #f9f9f9
+menu.title.text.color: #fa74b2
 menu.title.text.justify: center
 
 ## Items
@@ -137,7 +137,7 @@ menu.items.text.color: #f9f9f9
 menu.items.disabled.text.color: #5c6780
 menu.items.active.bg: flat
 menu.items.active.bg.color: #3b4252
-menu.items.active.text.color: #63c5ea
+menu.items.active.text.color: #f48ee8
 
 # --------------------------------------------------------
 

@@ -1,7 +1,7 @@
 * {
-  accent1:          #f9f9f9;
-  accent2:          #f9f9f9;
-  button-gradient:  linear-gradient(90, #f9f9f9, #f9f9f9);
+  accent1:          #f48ee8;
+  accent2:          #fa74b2;
+  button-gradient:  linear-gradient(90, #f48ee8, #fa74b2);
   background-alpha: #373e4df7;
   background:       #373e4d;
   background-light: #3b4252;

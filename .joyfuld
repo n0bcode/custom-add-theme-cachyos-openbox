@@ -70,6 +70,24 @@ EYEC_INT_DUNST_PRGBR="$COL_GREEN"                # Dunst progress-bar FG color
 EYEC_INT_OB_MENU_TTL="$EYEC_INT_ROFI_ACCNT1"     # Title color of Openbox menu
 EYEC_INT_OB_MENU_ITM="$EYEC_INT_ROFI_ACCNT2"     # Items color of Openbox menu
 
+# >~~~~~~~~~~~~~~~~~~~~~~~~~< Nordic >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~< Artistic Mode >~~~~~< #
+NORD_ART_TINT2_GRAD1='#88c0d0'               # Tint2 button gradient color #1
+NORD_ART_TINT2_GRAD2='#81a1c1'              # Tint2 button gradient color #2
+NORD_ART_ROFI_ACCNT1="$NORD_ART_TINT2_GRAD1"   # Rofi (buttons) accent color #1
+NORD_ART_ROFI_ACCNT2="$NORD_ART_TINT2_GRAD2"   # Rofi (buttons) accent color #2
+NORD_ART_DUNST_SMMRY='#d8dee9'                 # Dunst title / summary color
+NORD_ART_DUNST_PRGBR="$NORD_ART_TINT2_GRAD1"   # Dunst progress-bar FG color
+NORD_ART_OB_MENU_TTL="$NORD_ART_TINT2_GRAD1"  # Title color of Openbox menu
+NORD_ART_OB_MENU_ITM="$NORD_ART_TINT2_GRAD2"  # Items color of Openbox menu
+
+# >~~~~~~~~~~~~~~~~~~~~~~~~~< Nordic >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~< Interactive Mode >~~< #
+NORD_INT_ROFI_ACCNT1='#d8dee9'                 # Rofi (buttons) accent color #1
+NORD_INT_ROFI_ACCNT2="$NORD_INT_ROFI_ACCNT1"     # Rofi (buttons) accent color #2
+NORD_INT_DUNST_SMMRY="$NORD_INT_ROFI_ACCNT1"   # Dunst title / summary color
+NORD_INT_DUNST_PRGBR="$NORD_INT_ROFI_ACCNT1"    # Dunst progress-bar FG color
+NORD_INT_OB_MENU_TTL="$NORD_INT_ROFI_ACCNT2"   # Title color of Openbox menu
+NORD_INT_OB_MENU_ITM='#88c0d0'               # Items color of Openbox menu
+
 # >~~~~~~~~~~~~~< 0 to 100 >~~~~~~~~~~~~~~~~~~~~~~~~~~~< Opacity Levels >~~~~~~~~< #
 DUNST_OPACITY='97'
 ROFI_OPACITY='97'
@@ -186,8 +204,10 @@ siq()
 OB_MARGIN='10'
 MECH_GTK='Fleon'
 EYEC_GTK='Sweetly'
+NORD_GTK='Nordic'
 MECH_ICON='Papirus-Dark-Custom'
 EYEC_ICON='Papirus-Custom'
+NORD_ICON='Papirus-Dark-Custom'
 
 LIBS_PATH=" \
 /usr/lib \
@@ -224,6 +244,7 @@ GLADIENT_ICON_DIR="${ICONS_DIR}/Gladient"
 OB_BUTTON_STYLE_DIR="${THEMES_DIR}/Joyful.OBB"
 MECH_OB_THEME_DIR="${THEMES_DIR}/${MECH_GTK}/openbox-3"
 EYEC_OB_THEME_DIR="${THEMES_DIR}/${EYEC_GTK}/openbox-3"
+NORD_OB_THEME_DIR="${THEMES_DIR}/${NORD_GTK}/openbox-3"
 
 GTK3_CONFIG="${CONFIG_DIR}/gtk-3.0/settings.ini"
 MPD_CONFIG="${MPD_DIR}/mpd.conf"

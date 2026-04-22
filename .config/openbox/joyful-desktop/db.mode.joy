@@ -1,6 +1,6 @@
-current_theme                 "eyecandy"
+current_theme                 "nordic"
 current_mode                  "interactive"
 
-panel_orientation.artistic    "vertical"
+panel_orientation.artistic    "horizontal"
 vertical_panel.artistic       "left"
 horizontal_panel.artistic     "bottom"
