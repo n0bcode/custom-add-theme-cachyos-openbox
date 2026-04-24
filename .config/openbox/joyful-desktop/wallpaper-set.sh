@@ -25,7 +25,13 @@ case "${1}" in
 
         [ -n "$WALLPAPER" ] || exit ${?}
 
-        nitrogen --force-setter=xwindows --set-zoom-fill --save "${CHK_WALLPAPER_DIR}/${WALLPAPER}"
+        # FEH ONLY
+        feh --bg-fill --no-fehbg "${CHK_WALLPAPER_DIR}/${WALLPAPER}"
+
+        # XFDESKTOP TOO
+        for path in $(xfconf-query -c xfce4-desktop -lv 2>/dev/null | grep '/backdrop/screen0/monitor.*/workspace.*/last-image' || true); do
+            xfconf-query -c xfce4-desktop -p "${path}" -s "${CHK_WALLPAPER_DIR}/${WALLPAPER}"
+        done
 
         sed -e "/^wallpaper.${CHK_THEME}.${CHK_MODE}[ ]*/s|\".*\"$|\"${WALLPAPER}\"|" -i "$THEME_FILE"
 

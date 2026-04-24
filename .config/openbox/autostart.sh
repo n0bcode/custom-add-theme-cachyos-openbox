@@ -33,4 +33,12 @@ fi
 
 joyd_mpd_notifier
 
+# Modern Audio Backend (PipeWire)
+pipewire &
+pipewire-pulse &
+wireplumber &
+
+# Tumblerd Fix
+tumblerd-fix &
+
 # Any additions should be added below.

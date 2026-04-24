@@ -44,7 +44,13 @@ joyd_terminal_set "$JOYD_TERMINAL_SET_ARGS" &
 
 unset JOYD_TERMINAL_SET_ARGS
 
-[ -n "${1}" ] || nitrogen --force-setter=xwindows --set-zoom-fill --save "${CHK_WALLPAPER_DIR}/${CHK_WALLPAPER}"
+# FEH ONLY
+[ -n "${1}" ] || feh --bg-fill --no-fehbg "${CHK_WALLPAPER_DIR}/${CHK_WALLPAPER}"
+
+# XFDESKTOP TOO
+[ -n "${1}" ] || for path in $(xfconf-query -c xfce4-desktop -lv 2>/dev/null | grep '/backdrop/screen0/monitor.*/workspace.*/last-image' || true); do
+    xfconf-query -c xfce4-desktop -p "${path}" -s "${CHK_WALLPAPER_DIR}/${CHK_WALLPAPER}"
+done
 
 {
     case "$CHK_MODE" in
