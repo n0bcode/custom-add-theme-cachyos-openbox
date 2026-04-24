@@ -1,0 +1,47 @@
+# ── Panel ──
+panel_size = 100% 30
+panel_position = bottom center horizontal
+panel_background_id = 1
+panel_items = LTSC    # L=launcher T=taskbar S=systray C=clock
+panel_margin = 0 0
+panel_padding = 2 2 2
+panel_layer = top
+panel_monitor = all
+
+# ── Taskbar ──
+taskbar_mode = multi_desktop
+taskbar_padding = 2 2 4
+task_background_id = 0
+task_active_background_id = 2
+task_text = 1
+task_icon = 1
+task_maximum_size = 150 35
+
+# ── Clock ──
+time1_format = %H:%M
+time2_format = %a %d/%m
+clock_background_id = 0
+
+# ── Systray ──
+systray_padding = 2 4 2
+systray_background_id = 0
+
+# ── Background definitions ──
+# Background 1: Panel
+rounded = 0
+border_width = 0
+background_color = #1e1e2e 100
+border_color = #89b4fa 0
+
+# Background 2: Active task
+rounded = 4
+border_width = 1
+background_color = #313244 100
+border_color = #89b4fa 60
+start_color = START_COLOR 
+end_color = END_COLOR 
+button_text = ⟐
+
+# ── Fonts & Colors ──
+font = JetBrains Mono 10
+font_color = #cdd6f4 100

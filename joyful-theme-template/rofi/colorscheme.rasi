@@ -1,0 +1,13 @@
+* {
+    bg:       #1e1e2eff;
+    bg-alt:   #313244ff;
+    fg:       #cdd6f4ff;
+    fg-alt:   #585b70ff;
+    accent1:  #89b4faff;
+    accent2:  #f5c2e7ff;
+    urgent:   #f38ba8ff;
+    selected: #45475aff;
+    border:   #89b4fa88;
+    button-gradient: (90, #89b4faff, #f5c2e7ff);
+    background-alpha: f8;
+}

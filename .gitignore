@@ -31,3 +31,5 @@
 .local/share/opentui/tree-sitter/queries/bash-20eac162.scm
 .local/share/opentui/tree-sitter/languages/tree-sitter-bash.wasm
 .local/share/recently-used.xbel
+test-openbox-config/
+mock-import-joyful-theme-template/

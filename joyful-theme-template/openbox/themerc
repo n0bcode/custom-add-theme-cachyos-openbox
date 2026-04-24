@@ -1,0 +1,83 @@
+# ═══════════════════════════════════════
+# Openbox Theme: THEME_NAME
+# Style: Joyful Desktop Template
+# ═══════════════════════════════════════
+
+# ── Màu sắc titlebar ──
+window.active.title.bg: flat solid
+window.active.title.bg.color: #1e1e2e
+window.active.label.text.color: #cdd6f4
+window.active.label.bg: flat solid
+window.active.label.bg.color: #1e1e2e
+
+window.inactive.title.bg: flat solid
+window.inactive.title.bg.color: #181825
+window.inactive.label.text.color: #585b70
+window.inactive.label.bg: flat solid
+window.inactive.label.bg.color: #181825
+
+# ── Nút điều khiển (close / max / min / icon) ──
+window.active.button.unpressed.bg: flat solid
+window.active.button.unpressed.bg.color: #1e1e2e
+window.active.button.unpressed.image.color: #cdd6f4
+
+window.active.button.hover.bg: flat solid
+window.active.button.hover.bg.color: #313244
+window.active.button.hover.image.color: #f38ba8
+
+window.active.button.pressed.bg: flat solid
+window.active.button.pressed.bg.color: #45475a
+
+# ── Border ──
+window.active.border.color: #89b4fa
+window.inactive.border.color: #313244
+window.active.client.color: #1e1e2e
+window.inactive.client.color: #181825
+
+# ── Handle (resize grip dưới cửa sổ) ──
+window.active.handle.bg: flat solid
+window.active.handle.bg.color: #89b4fa
+window.active.grip.bg: flat solid
+window.active.grip.bg.color: #89b4fa
+
+window.inactive.handle.bg: flat solid
+window.inactive.handle.bg.color: #313244
+
+# ── Kích thước ──
+border.width: 1
+padding.width: 6
+padding.height: 4
+handle.width: 3
+window.client.padding.width: 0
+window.client.padding.height: 0
+
+# ── Menu ──
+menu.title.bg: flat solid
+menu.title.bg.color: #1e1e2e
+menu.title.text.color: #89b4fa
+menu.title.text.justify: Left
+
+menu.items.bg: flat solid
+menu.items.bg.color: #181825
+menu.items.text.color: #cdd6f4
+menu.items.disabled.text.color: #585b70
+
+menu.items.active.bg: flat solid
+menu.items.active.bg.color: #313244
+menu.items.active.text.color: #cdd6f4
+
+menu.separator.color: #313244
+menu.separator.padding.width: 6
+menu.separator.padding.height: 3
+menu.border.color: #313244
+menu.border.width: 1
+
+# ── OSD (On Screen Display - desktop switch popup) ──
+osd.bg: flat solid
+osd.bg.color: #1e1e2e
+osd.border.color: #89b4fa
+osd.border.width: 1
+osd.label.text.color: #cdd6f4
+
+# ── Font ──
+*.font: JetBrains Mono:size=11:weight=Bold
