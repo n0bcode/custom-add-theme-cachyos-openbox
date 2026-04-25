@@ -12,7 +12,7 @@ export LANG='POSIX'
 exec >/dev/null 2>&1
 . "${HOME}/.joyfuld"
 
-sed -e "/^@import[ ]*/s|schemes/[a-z]*.rasi|schemes/${CHK_THEME}.rasi|" -i "$ROFI_CONFIG"
+sed -e "/^@import[ ]*/s|schemes/[a-zA-Z0-9_-]*.rasi|schemes/${CHK_THEME}.rasi|" -i "$ROFI_CONFIG"
 
 # https://gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html#:~:text=expand_aliases
 [ -z "$BASH" ] || shopt -s expand_aliases

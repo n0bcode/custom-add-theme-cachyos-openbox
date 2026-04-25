@@ -286,6 +286,7 @@ alias joyd_mpd_notifier='${MPD_SCRIPTS_DIR}/mpd-notifier.sh'
 alias joyd_mpd_notify_albumart='${MPD_SCRIPTS_DIR}/notify.album-art.sh'
 alias joyd_layout_set='${JOYD_DIR}/layout-set.sh'
 alias joyd_terminal_set='${JOYD_DIR}/terminal-set.sh'
+alias joyd_theme_select='${JOYD_DIR}/theme-select.sh'
 alias joyd_theme_set='${JOYD_DIR}/theme-set.sh'
 alias joyd_toggle_mode='${JOYD_DIR}/toggle-mode.sh'
 alias joyd_user_interface_set='${JOYD_DIR}/user-interface-set.sh'
@@ -318,6 +319,13 @@ joyd_cross_variables()
           TINT2_G1=\"\$${CUT4}_${CUT3}_TINT2_GRAD1\"
           TINT2_G2=\"\$${CUT4}_${CUT3}_TINT2_GRAD2\"
           TINT2_SB=\"\$${CUT4}_${CUT3}_TINT2_GLYPH\""
+
+    # Fallback for custom themes: if OBT_D is empty, derive from GTK_T
+    [ -n "$OBT_D" ] || OBT_D="/usr/share/themes/${GTK_T}/openbox-3"
+
+    # Last-resort fallbacks if snippet was not imported
+    [ -n "$GTK_T"  ] || GTK_T="$CHK_THEME"
+    [ -n "$ICON_T" ] || ICON_T="Papirus-Dark-Custom"
 }
 
 joyd_gtk_live_reload()

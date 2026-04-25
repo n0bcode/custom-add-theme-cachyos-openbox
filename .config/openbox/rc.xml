@@ -492,6 +492,12 @@
         <command>~/.config/openbox/joyful-desktop/toggle-mode.sh apply</command>
       </action>
     </keybind>
+    <!-- Theme picker popup. -->
+    <keybind key="W-S-t">
+      <action name="Execute">
+        <command>~/.config/openbox/joyful-desktop/theme-select.sh</command>
+      </action>
+    </keybind>
   </keyboard>
   <mouse>
     <!-- Number of pixels the mouse must move before a drag begins. -->

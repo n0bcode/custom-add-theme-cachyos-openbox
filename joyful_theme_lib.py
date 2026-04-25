@@ -32,39 +32,44 @@ class JoyfulThemeLib:
             return ["Sans", "Serif", "Monospace"]
 
     @staticmethod
-    def scan_icons():
-        """List available icon themes."""
+    def scan_icons(script_dir):
+        """Scan available Icon themes from local and system paths."""
         icons = set()
+        # Prioritize local staging folders
         search_paths = [
-            os.path.expanduser("~/.icons"),
-            os.path.expanduser("~/.local/share/icons"),
+            os.path.join(script_dir, ".icons"),
+            os.path.join(os.path.expanduser("~"), ".icons"),
             "/usr/share/icons"
         ]
-        for path in search_paths:
-            if os.path.exists(path):
-                for item in os.listdir(path):
-                    full_path = os.path.join(path, item)
-                    if os.path.isdir(full_path) and os.path.exists(os.path.join(full_path, "index.theme")):
-                        icons.add(item)
+        for dir_path in search_paths:
+            if os.path.exists(dir_path):
+                try:
+                    for item in os.listdir(dir_path):
+                        if os.path.isdir(os.path.join(dir_path, item)):
+                            if os.path.exists(os.path.join(dir_path, item, "index.theme")):
+                                icons.add(item)
+                except: pass
         return sorted(list(icons))
 
     @staticmethod
-    def scan_gtk_themes():
-        """List available GTK themes."""
+    def scan_gtk_themes(script_dir):
+        """Scan available GTK themes from local and system paths."""
         themes = set()
         search_paths = [
-            os.path.expanduser("~/.themes"),
-            os.path.expanduser("~/.local/share/themes"),
+            os.path.join(script_dir, ".themes"),
+            os.path.join(os.path.expanduser("~"), ".themes"),
             "/usr/share/themes"
         ]
-        for path in search_paths:
-            if os.path.exists(path):
-                for item in os.listdir(path):
-                    full_path = os.path.join(path, item)
-                    if os.path.isdir(full_path):
-                        if os.path.exists(os.path.join(full_path, "gtk-3.0")) or \
-                           os.path.exists(os.path.join(full_path, "gtk-2.0")):
-                            themes.add(item)
+        for dir_path in search_paths:
+            if os.path.exists(dir_path):
+                try:
+                    for item in os.listdir(dir_path):
+                        full_path = os.path.join(dir_path, item)
+                        if os.path.isdir(full_path):
+                            if os.path.exists(os.path.join(full_path, "gtk-3.0")) or \
+                               os.path.exists(os.path.join(full_path, "gtk-2.0")):
+                                themes.add(item)
+                except: pass
         return sorted(list(themes))
 
     @staticmethod

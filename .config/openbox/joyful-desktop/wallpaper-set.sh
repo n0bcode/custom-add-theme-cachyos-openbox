@@ -115,6 +115,14 @@ case "${1}" in
                            "${CHK_WALLPAPER_DIR}/${RAW%.*}${RES}.jpg" \
                            || continue
                     ;;
+                    *)     # Custom themes: crop to 16:9 without color overlay
+                           magick "$RAW" \
+                                  -gravity center \
+                                  -crop 16:9 \
+                                  -quality 100 \
+                           "${CHK_WALLPAPER_DIR}/${RAW%.*}${RES}.jpg" \
+                           || continue
+                    ;;
                 esac
 
                 dunstify '' "Successfully generated!\n<span size='small'>Now it's time to change X wallpaper</span>" \

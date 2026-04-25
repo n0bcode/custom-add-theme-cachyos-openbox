@@ -20,8 +20,8 @@ killall tint2 dunst -q &
 
 setup_ui()
 {
-    sed -e "/^current_theme[ ]*/s|\"[a-z]*\"$|\"${1}\"|" \
-        -e "/^current_mode[ ]*/s|\"[a-z]*\"$|\"${2}\"|" \
+    sed -e "/^current_theme[ ]*/s|\"[a-zA-Z0-9_-]*\"$|\"${1}\"|" \
+        -e "/^current_mode[ ]*/s|\"[a-zA-Z0-9_-]*\"$|\"${2}\"|" \
         -i "$MODE_FILE"
 
     joyd_theme_set
@@ -35,6 +35,9 @@ setup_ui()
         eyec*) BODY='EyeCandy Theme'
         ;;
         nord*) BODY='Nordic Theme'
+        ;;
+        *)     # Capitalize first letter of custom theme
+               BODY="$(echo "${1}" | sed 's/./\u&/') Theme"
         ;;
     esac
 
@@ -54,11 +57,20 @@ setup_ui()
 case "${1}" in
     '') joyd_tray_programs kill
 
-        case "$CHK_THEME" in
-            mechanical) NEXT_THEME="eyecandy" ;;
-            eyecandy)   NEXT_THEME="nordic" ;;
-            *)          NEXT_THEME="mechanical" ;;
-        esac
+        # Dynamic theme list from rofi colorschemes
+        THEMES_DIR="${HOME}/.config/rofi/themes/colorschemes"
+        THEME_LIST="$(ls "$THEMES_DIR" | sed 's/\.rasi//g' | tr '\n' ' ')"
+        
+        # Determine next theme in the sequence
+        NEXT_THEME=$(echo "$THEME_LIST" | awk -v current="$CHK_THEME" '{
+            for (i=1; i<=NF; i++) {
+                if ($i == current) {
+                    print (i==NF ? $1 : $(i+1));
+                    exit;
+                }
+            }
+            print $1;
+        }')
         
         setup_ui "$NEXT_THEME" "$CHK_MODE" reverse_terminal_bg_fg
 

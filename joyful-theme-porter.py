@@ -340,8 +340,8 @@ class JoyfulThemePorter(Gtk.Window):
         self.load_system_themes()
 
     def on_get_ai_template_clicked(self, widget):
-        gtk_list = JoyfulThemeLib.scan_gtk_themes()
-        icon_list = JoyfulThemeLib.scan_icons()
+        gtk_list = JoyfulThemeLib.scan_gtk_themes(self.script_dir)
+        icon_list = JoyfulThemeLib.scan_icons(self.script_dir)
         font_list = JoyfulThemeLib.scan_fonts()
         
         template = {
@@ -665,12 +665,12 @@ class JoyfulThemePorter(Gtk.Window):
 
     def populate_creator_combos(self):
         # GTK Themes
-        gtk_themes = JoyfulThemeLib.scan_gtk_themes()
+        gtk_themes = JoyfulThemeLib.scan_gtk_themes(self.script_dir)
         for t in gtk_themes: self.new_gtk_combo.append_text(t)
         if gtk_themes: self.new_gtk_combo.set_active(0)
 
         # Icons
-        icons = JoyfulThemeLib.scan_icons()
+        icons = JoyfulThemeLib.scan_icons(self.script_dir)
         for i in icons: self.new_icon_combo.append_text(i)
         if icons: self.new_icon_combo.set_active(0)
 
