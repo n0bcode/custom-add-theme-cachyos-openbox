@@ -12,7 +12,8 @@ class JoyfulThemeLib:
         """Calculate the 4-character uppercase prefix for a theme."""
         if not theme_name:
             return ""
-        return theme_name.upper()[:4]
+        clean_name = re.sub(r'[^a-zA-Z0-9]', '', theme_name)
+        return clean_name.upper()[:4]
 
     @staticmethod
     def scan_fonts():
@@ -256,12 +257,12 @@ class ThemeGenerator:
         # 2. Create db.theme.joy.snippet
         db_path = os.path.join(target_dir, "db.theme.joy.snippet")
         with open(db_path, "w") as f:
-            f.write(f"ob_button_style.{name}.artistic='{config_data.get('button_style_art', 'circles-filled')}'\n")
-            f.write(f"ob_button_style.{name}.interactive='{config_data.get('button_style_int', 'circles-outline')}'\n")
-            f.write(f"ob_button_location.{name}.artistic='{config_data.get('button_loc_art', 'left')}'\n")
-            f.write(f"ob_button_location.{name}.interactive='{config_data.get('button_loc_int', 'right')}'\n")
-            f.write(f"wallpaper.{name}.artistic='{name}.artistic.jpg'\n")
-            f.write(f"wallpaper.{name}.interactive='{name}.interactive.jpg'\n")
+            f.write(f"ob_button_style.{name}.artistic          \"{config_data.get('button_style_art', 'circles-filled')}\"\n")
+            f.write(f"ob_button_style.{name}.interactive       \"{config_data.get('button_style_int', 'circles-outline')}\"\n")
+            f.write(f"ob_button_location.{name}.artistic       \"{config_data.get('button_loc_art', 'left')}\"\n")
+            f.write(f"ob_button_location.{name}.interactive    \"{config_data.get('button_loc_int', 'right')}\"\n")
+            f.write(f"wallpaper.{name}.artistic                \"{name}.artistic.jpg\"\n")
+            f.write(f"wallpaper.{name}.interactive             \"{name}.interactive.jpg\"\n")
 
         # 3. Copy Assets
         os.makedirs(os.path.join(target_dir, "wallpapers"), exist_ok=True)
@@ -285,5 +286,36 @@ class ThemeGenerator:
                     shutil.copytree(src_sub, dest_sub)
         else:
             print(f"Warning: Template path {template_path} not found. Skipping config copy.")
+            
+        # 5. Inject Tint2 Static Colors (For the advanced templates)
+        tint2_dir = os.path.join(target_dir, "tint2")
+        if os.path.exists(tint2_dir):
+            art_bg = config_data.get('colors_art', {}).get("THEM_ART_TINT2_BG", "#3b4252")
+            art_fg = config_data.get('colors_art', {}).get("THEM_ART_TINT2_FG", "#f9f9f9")
+            
+            colors_int = config_data.get('colors_int')
+            int_bg1 = colors_int.get("THEM_INT_TINT2_BG", "#3b4252") if colors_int else art_bg
+            int_bg2 = colors_int.get("THEM_INT_TINT2_BG2", "#434c5e") if colors_int else art_bg
+            int_fg  = colors_int.get("THEM_INT_TINT2_FG", "#f9f9f9") if colors_int else art_fg
+            
+            for file in os.listdir(tint2_dir):
+                filepath = os.path.join(tint2_dir, file)
+                if not os.path.isfile(filepath): continue
+                
+                with open(filepath, 'r') as f:
+                    content = f.read()
+                    
+                if "artistic" in file:
+                    # Artistic replacements based on Nordic template
+                    content = content.replace("#3b4252", art_bg)
+                    content = content.replace("#f9f9f9", art_fg)
+                elif "interactive" in file:
+                    # Interactive replacements based on Nordic template
+                    content = content.replace("#3b4252", int_bg1)
+                    content = content.replace("#434c5e", int_bg2)
+                    content = content.replace("#f9f9f9", int_fg)
+                    
+                with open(filepath, 'w') as f:
+                    f.write(content)
         
         return target_dir

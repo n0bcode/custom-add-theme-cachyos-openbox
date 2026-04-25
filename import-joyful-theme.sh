@@ -16,17 +16,23 @@ NC='\033[0m'
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-if [[ $# -eq 0 ]]; then
-    echo -e "${YELLOW}Cách sử dụng: $0 <path_to_theme_folder> [--apply]${NC}"
+THEME_SRC=""
+APPLY_MODE=0
+TARGET_DIR=""
+
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        --apply) APPLY_MODE=1 ;;
+        --target) TARGET_DIR="$2"; shift ;;
+        *) THEME_SRC="${1%/}" ;;
+    esac
+    shift
+done
+
+if [[ -z "$THEME_SRC" ]]; then
+    echo -e "${YELLOW}Cách sử dụng: $0 <path_to_theme_folder> [--apply] [--target <dir>]${NC}"
     echo -e "   Thư mục theme mẫu có thể tham khảo tại: ${GREEN}joyful-theme-template/${NC}"
     exit 1
-fi
-
-THEME_SRC="${1%/}" # Xóa dấu / ở cuối nếu có
-APPLY_MODE=0
-
-if [[ "${2:-}" == "--apply" ]]; then
-    APPLY_MODE=1
 fi
 
 if [[ ! -d "$THEME_SRC" ]]; then
@@ -35,8 +41,9 @@ if [[ ! -d "$THEME_SRC" ]]; then
 fi
 
 THEME_NAME="$(basename "$THEME_SRC")"
-# Tạo tiền tố 4 ký tự viết hoa cho THEME_NAME
-UCTM=$(echo "$THEME_NAME" | tr '[:lower:]' '[:upper:]')
+# Tạo tiền tố 4 ký tự viết hoa cho THEME_NAME, bỏ ký tự đặc biệt
+CLEAN_NAME=$(echo "$THEME_NAME" | tr -cd '[:alnum:]')
+UCTM=$(echo "$CLEAN_NAME" | tr '[:lower:]' '[:upper:]')
 PREFIX_T="${UCTM:0:4}"
 
 echo -e "${BLUE}══════════════════════════════════════════════════${NC}"
@@ -61,7 +68,7 @@ if [[ $APPLY_MODE -eq 0 ]]; then
 else
     echo -e "${RED}[!] CHẾ ĐỘ THỰC THI (--apply). File hệ thống sẽ bị thay đổi.${NC}"
     echo -e "${BLUE}══════════════════════════════════════════════════${NC}"
-    DEST_DIR="${SCRIPT_DIR}"
+    DEST_DIR="${TARGET_DIR:-$SCRIPT_DIR}"
 fi
 
 # Hàm tiện ích copy

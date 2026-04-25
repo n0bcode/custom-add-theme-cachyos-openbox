@@ -125,7 +125,8 @@ check_theme() {
         fi
     }
 
-    UCTM=$(echo "$THEME_NAME" | tr '[:lower:]' '[:upper:]')
+    CLEAN_NAME=$(echo "$THEME_NAME" | tr -cd '[:alnum:]')
+    UCTM=$(echo "$CLEAN_NAME" | tr '[:lower:]' '[:upper:]')
     PREFIX_T="${UCTM:0:4}"
 
     echo -e "\n${BLUE}[1] Kiểm tra Biến Môi Trường Joyful (.joyfuld)...${NC}"

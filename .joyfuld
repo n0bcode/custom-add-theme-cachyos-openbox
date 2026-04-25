@@ -298,8 +298,9 @@ alias joyd_screenshot_selection='${SCRIPTS_DIR}/screenshot-selection.sh'
 
 joyd_cross_variables()
 {
+    CLEAN_THEME=$(echo "${CHK_THEME}" | tr -cd '[:alnum:]')
     UCTM="$(tr '[:lower:]' '[:upper:]' <<- VAR
-				${CHK_THEME} ####### ${CHK_MODE}
+				${CLEAN_THEME} ####### ${CHK_MODE}
 			VAR
           )"
 
