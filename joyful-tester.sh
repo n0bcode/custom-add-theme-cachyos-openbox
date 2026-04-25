@@ -191,8 +191,8 @@ dry_run_theme() {
     echo -e "Theme Test: ${GREEN}${THEME_NAME}${NC}"
     echo -e "${BLUE}══════════════════════════════════════════════════${NC}"
 
-    MOCK_DIR="${SCRIPT_DIR}/mock-joyful"
-    echo "[*] Creating isolated mock environment at: mock-joyful/"
+    MOCK_DIR="${SCRIPT_DIR}/mock-joyful-test"
+    echo "[*] Creating isolated mock environment at: mock-joyful-test/"
     rm -rf "$MOCK_DIR"
     mkdir -p "$MOCK_DIR/.config/openbox/joyful-desktop"
     mkdir -p "$MOCK_DIR/.config/openbox"
@@ -261,15 +261,6 @@ case "$COMMAND" in
     list)
         list_themes
         ;;
-    scan-fonts)
-        scan_fonts
-        ;;
-    scan-icons)
-        scan_icons
-        ;;
-    scan-gtk)
-        scan_gtk
-        ;;
     check)
         if [[ $# -eq 0 ]]; then
             echo -e "${RED}[!] Missing theme name for check. Usage: $0 check <theme>${NC}"
@@ -283,6 +274,15 @@ case "$COMMAND" in
             exit 1
         fi
         dry_run_theme "$1"
+        ;;
+    scan-gtk)
+        scan_gtk
+        ;;
+    scan-icons)
+        scan_icons
+        ;;
+    scan-fonts)
+        scan_fonts
         ;;
     *)
         echo -e "${RED}[✗] Unknown command: $COMMAND${NC}"

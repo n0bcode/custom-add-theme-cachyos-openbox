@@ -49,7 +49,7 @@ if [[ $APPLY_MODE -eq 0 ]]; then
     echo -e "${YELLOW}[!] Đang chạy ở chế độ DRY-RUN (Mô phỏng). Không có file hệ thống nào bị thay đổi.${NC}"
     echo -e "${YELLOW}    Thêm cờ --apply ở cuối lệnh để thực thi thật.${NC}"
     echo -e "${BLUE}══════════════════════════════════════════════════${NC}"
-    DEST_DIR="${SCRIPT_DIR}/mock-import-${THEME_NAME}"
+    DEST_DIR="${SCRIPT_DIR}/mock-joyful-test"
     rm -rf "$DEST_DIR"
     mkdir -p "$DEST_DIR"
     # Copy hệ thống gốc sang mock
@@ -88,6 +88,7 @@ append_snippet() {
     local src="$1"
     local dest="$2"
     local desc="$3"
+    local check_pattern="${4:-.*${THEME_NAME}.*}"
     
     if [[ -f "$src" ]]; then
         if grep -q "THEME_NAME" "$src"; then
@@ -95,8 +96,8 @@ append_snippet() {
         fi
         
         # Nếu chưa tồn tại phần theme này thì mới append
-        if grep -qiE ".*${THEME_NAME}.*" "$dest"; then
-             echo -e "  ${YELLOW}[!]${NC} ${desc}: Dữ liệu cho ${THEME_NAME} dường như đã tồn tại. Bỏ qua ghi đè để an toàn."
+        if [[ -f "$dest" ]] && grep -qiE "$check_pattern" "$dest"; then
+             echo -e "  ${YELLOW}[!]${NC} ${desc}: Dữ liệu khớp với mẫu '${check_pattern}' đã tồn tại trong ${dest}. Bỏ qua."
         else
              echo "" >> "$dest"  # Đảm bảo xuống dòng trước khi append
              cat "$src" >> "$dest"
@@ -110,10 +111,10 @@ append_snippet() {
 
 # 1. Append snippets
 echo -e "\n${BLUE}[1] Cập nhật Biến Môi Trường và Database...${NC}"
-append_snippet "${THEME_SRC}/env.joyfuld.snippet" "${DEST_DIR}/.joyfuld" "Môi trường .joyfuld"
+append_snippet "${THEME_SRC}/env.joyfuld.snippet" "${DEST_DIR}/.joyfuld" "Môi trường .joyfuld" "^${PREFIX_T}_"
 mkdir -p "${DEST_DIR}/.config/openbox/joyful-desktop"
 touch "${DEST_DIR}/.config/openbox/joyful-desktop/db.theme.joy"
-append_snippet "${THEME_SRC}/db.theme.joy.snippet" "${DEST_DIR}/.config/openbox/joyful-desktop/db.theme.joy" "Database db.theme.joy"
+append_snippet "${THEME_SRC}/db.theme.joy.snippet" "${DEST_DIR}/.config/openbox/joyful-desktop/db.theme.joy" "Database db.theme.joy" "\.${THEME_NAME}\."
 
 # Lấy tên GTK để đặt thư mục Openbox cho đúng (Vì .joyfuld khai báo NORD_GTK='Nordic')
 GTK_NAME=$(grep -oP "(?<=^${PREFIX_T}_GTK=')[^']*" "${THEME_SRC}/env.joyfuld.snippet" || echo "${THEME_NAME}")
