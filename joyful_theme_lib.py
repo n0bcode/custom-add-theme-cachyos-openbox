@@ -317,5 +317,23 @@ class ThemeGenerator:
                     
                 with open(filepath, 'w') as f:
                     f.write(content)
+
+        # 6. Apply Custom Tint2 Configs
+        custom_tint2 = config_data.get('custom_tint2_configs', {})
+        if tint2_dir and os.path.exists(tint2_dir):
+            for filename, content in custom_tint2.items():
+                if content and content.strip():
+                    # Check if the panel_window_name or other theme-specific strings need updating
+                    # If it uses 'joyful.artistic.tint2', it should be '{name}.artistic.tint2'
+                    content = content.replace("joyful.artistic.tint2", f"{name}.artistic.tint2")
+                    content = content.replace("joyful.interactive.tint2", f"{name}.interactive.tint2")
+                    # Make sure the name in the header is updated too
+                    content = content.replace("Joyful top interactive", f"{name.capitalize()} top interactive")
+                    content = content.replace("Joyful horizontal artistic", f"{name.capitalize()} horizontal artistic")
+                    content = content.replace("Joyful vertical artistic", f"{name.capitalize()} vertical artistic")
+
+                    filepath = os.path.join(tint2_dir, filename)
+                    with open(filepath, 'w') as f:
+                        f.write(content)
         
         return target_dir

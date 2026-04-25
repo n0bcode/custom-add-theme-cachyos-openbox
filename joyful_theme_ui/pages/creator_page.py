@@ -5,7 +5,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk
 from joyful_theme_lib import JoyfulThemeLib, ThemeGenerator
-from ..dialogs import show_error_dialog, show_info_dialog, show_config_dialog, import_ai_config_dialog
+from ..dialogs import show_error_dialog, show_info_dialog, show_config_dialog, import_ai_config_dialog, edit_text_dialog
 
 class CreatorPage(Gtk.ScrolledWindow):
     def __init__(self, app):
@@ -195,6 +195,29 @@ class CreatorPage(Gtk.ScrolledWindow):
             
         vbox.pack_start(card_assets, False, False, 0)
 
+        # 6. Advanced Tint2 Configuration
+        adv_tint2_title = Gtk.Label(label="Advanced Tint2 Configuration (Optional Full Override)")
+        adv_tint2_title.get_style_context().add_class("h3")
+        vbox.pack_start(adv_tint2_title, False, False, 0)
+        
+        card_adv_tint2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=15)
+        card_adv_tint2.get_style_context().add_class("card")
+        
+        self.custom_tint2_configs = {
+            "top.interactive.tint2rc": "",
+            "horizontal.artistic.tint2rc": "",
+            "vertical.artistic.tint2rc": ""
+        }
+        
+        btn_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        for key in self.custom_tint2_configs.keys():
+            btn = Gtk.Button(label=f"Edit {key}")
+            btn.connect("clicked", self.on_edit_custom_tint2_clicked, key)
+            btn_box.pack_start(btn, True, True, 0)
+            
+        card_adv_tint2.pack_start(btn_box, False, False, 0)
+        vbox.pack_start(card_adv_tint2, False, False, 0)
+
         # Build Button
         build_btn = Gtk.Button(label="GENERATE THEME FOLDER")
         build_btn.get_style_context().add_class("suggested-action")
@@ -231,6 +254,16 @@ class CreatorPage(Gtk.ScrolledWindow):
         hbox.pack_start(label, False, False, 0)
         hbox.pack_start(widget, True, True, 0)
         parent.pack_start(hbox, False, False, 0)
+
+    def on_edit_custom_tint2_clicked(self, widget, key):
+        def save_callback(new_text):
+            self.custom_tint2_configs[key] = new_text
+            if new_text.strip():
+                widget.set_label(f"Edit {key} (*)")
+            else:
+                widget.set_label(f"Edit {key}")
+                
+        edit_text_dialog(self.app, f"Customizing {key}", self.custom_tint2_configs.get(key, ""), save_callback)
 
     def on_get_ai_template_clicked(self, widget):
         gtk_list = JoyfulThemeLib.scan_gtk_themes(self.app.script_dir)
@@ -278,6 +311,11 @@ class CreatorPage(Gtk.ScrolledWindow):
                     "THEM_INT_DUNST_PRGBR": "#89b4fa",
                     "THEM_INT_OB_MENU_TTL": "#f5e0dc",
                     "THEM_INT_OB_MENU_ITM": "#89b4fa"
+                },
+                "custom_tint2_configs": {
+                    "top.interactive.tint2rc": "",
+                    "horizontal.artistic.tint2rc": "",
+                    "vertical.artistic.tint2rc": ""
                 }
             }
         }
@@ -327,6 +365,11 @@ class CreatorPage(Gtk.ScrolledWindow):
         else:
             self.int_colors_check.set_active(False)
 
+        if "custom_tint2_configs" in config:
+            for key, val in config["custom_tint2_configs"].items():
+                if key in self.custom_tint2_configs:
+                    self.custom_tint2_configs[key] = val
+
     def on_int_colors_toggled(self, widget):
         active = widget.get_active()
         self.card_colors_int.set_visible(active)
@@ -375,6 +418,7 @@ class CreatorPage(Gtk.ScrolledWindow):
                 'button_loc_int': self.new_btn_loc_int.get_text() or "right",
                 'colors_art': {},
                 'colors_int': None,
+                'custom_tint2_configs': self.custom_tint2_configs.copy(),
                 'assets': {}
             }
             

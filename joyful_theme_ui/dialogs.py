@@ -76,5 +76,33 @@ def import_ai_config_dialog(parent, apply_callback):
             show_info_dialog(parent, "Configuration applied successfully!")
         except Exception as e:
             show_error_dialog(parent, f"Failed to parse JSON: {e}")
+    dialog.destroy()
+
+def edit_text_dialog(parent, title, initial_text, apply_callback):
+    dialog = Gtk.Dialog(title=title, parent=parent, flags=0)
+    dialog.add_buttons(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_SAVE, Gtk.ResponseType.OK)
+    dialog.set_default_size(700, 600)
+    
+    box = dialog.get_content_area()
+    label = Gtk.Label(label="Edit configuration below:")
+    label.set_margin_top(10)
+    box.pack_start(label, False, False, 5)
+    
+    scrolled = Gtk.ScrolledWindow()
+    textview = Gtk.TextView()
+    textview.set_wrap_mode(Gtk.WrapMode.NONE)
+    textview.set_monospace(True)
+    textview.get_buffer().set_text(initial_text)
+    scrolled.add(textview)
+    box.pack_start(scrolled, True, True, 10)
+    
+    dialog.show_all()
+    response = dialog.run()
+    
+    if response == Gtk.ResponseType.OK:
+        buffer = textview.get_buffer()
+        text = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), True)
+        apply_callback(text)
     
     dialog.destroy()
+
